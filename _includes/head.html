@@ -36,7 +36,14 @@
 div.gallery:hover {
   border: 1px solid #777;
 }
+.lightgallery1 a {
+  padding: 0px 20px 20px 0;
+  display: none;
+}
 
+.lightgallery1 a img {
+  width: 33%;
+}
 div.gallery img {
   width: 100%;
   height: auto;
@@ -47,4 +54,16 @@ div.desc {
   text-align: center;
 }
     </style>
+    <script>
+        $(function() {
+  $(".item").slice(0, 2).show(); // select the first ten
+  $("#load").click(function(e) { // click event for load more
+    e.preventDefault();
+    $(".item:hidden").slice(0, 2).show(); // select next 10 hidden divs and show them
+    if ($(".item:hidden").length == 0) { // check if any hidden divs still exist
+      alert("No more divs"); // alert if there are none left
+    }
+  });
+});
+    </script>
 </head>
