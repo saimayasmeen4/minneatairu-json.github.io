@@ -6,56 +6,69 @@
 
     <nav class="site-nav">
 <!--       <a href="#" class="menu-icon"> -->
-<div class="lightgallery1">
-  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
 
-  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"><img src="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"></a>
+<div class="lightgallery1"></div>
 
-  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
-
-  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
-
-  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg"></a>
-
-  <a href="hhttps://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
-
-  
-</div>
-<div>
-<a href="#" id="load">Load More</a>
-</div>
+<button id="load">Load More</button>
       <style>
-        div.gallery {
-  margin: 5px;
-  border: 1px solid #ccc;
-  float: left;
-  width: 180px;
-}
-
-div.gallery:hover {
-  border: 1px solid #777;
-}
-.lightgallery1 a {
+       .lightgallery1 a {
+  width: 30.33%;
+  margin: auto;
+  display: inline-block;
   padding: 0px 20px 20px 0;
-/*   display: none; */
 }
 
 .lightgallery1 a img {
-  width: 33%;
-}
-div.gallery img {
   width: 100%;
-  height: auto;
 }
 
-
-
-div.desc {
-  padding: 15px;
-  text-align: center;
+a {
+ /* display: none; */
 }
       </style>
       
+      <script>
+        var links = [
+    "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
+  "https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg",
+  "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
+  "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
+  "https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg",
+  "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
+  "https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg",
+  "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
+  "https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg",
+  "https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg",
+  "https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg",
+];
+
+var $gallery  = $(".lightgallery1").first();
+var $loadMore = $("#load");
+
+function loadMore(e) {
+  
+  for(var i = 0; i < 3; i++) {
+     
+    if(links.length) {
+
+      var src   = links.pop();
+      var $link = $("<a>");
+      var $img  = $("<img>");
+
+      $img.attr("src", src);
+      $link.attr("href", src).addClass("item");
+      
+      $link.append($img);
+      $gallery.append($link);
+
+    } else {
+      $loadMore.hide();
+    }
+    
+  }
+  
+}
+      </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        <script>
         $(function() {
