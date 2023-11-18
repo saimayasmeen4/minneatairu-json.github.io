@@ -7,87 +7,60 @@
 
     <nav class="site-nav">
 <!--       <a href="#" class="menu-icon"> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="lightgallery1">
+  <a href="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="photos-list">
-  <ul>
-    <li class="hidden"> <img src="https://picsum.photos/200" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/mist.jpg" /></li>
-    <li class="hidden"> <img src="https://picsum.photos/200" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/mountainskies.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/underwater.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/paris.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/nature.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/paris.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/falls2.jpg" /></li>
-    <li class="hidden"> <img src="https://www.w3schools.com/w3images/wedding.jpg" /></li>
-  </ul>
-  <button type="button" id="loadAllImages">Load all Images</button>
+  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"><img src="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"></a>
+
+  <a href="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
+
+  <a href="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
+
+  <a href="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg"></a>
+
+  <a href="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
+
+  <a href="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg"></a>
+
+  <a href="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg" class="item"><img src="https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg"></a>
+
+  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"></a>
+
+  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"></a>
+
+  <a href="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg" class="item"><img src="https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg"></a>
+
 </div>
-      <style>
-       .photos-list ul,
-.videos-list ul {
-  margin: 0px;
-  padding: 0px;
-}
+<div>
+<a href="#" id="load">Load More</a>
+</div>
 
-.photos-list ul li,
-.videos-list ul li {
-  list-style: none;
-  float: left;
-  width: 18%;
-  margin: 5px;
-  position: relative;
-}
-
-.photos-list ul li img,
-.videos-list ul li img {
-  width: 100%;
-  border-radius: 10px;
-  height: 110px;
-}
-
-.photos-list ul li span,
-.videos-list ul li span {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, .5);
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.photos-list ul li span svg,
-.videos-list ul li span svg {
-  color: #fff;
-}
-
-.hidden {
+<style>
+  .lightgallery1 a {
   display: none;
 }
-      </style>
-      
-      <script>
-        $(document).ready(function() {
-  const maxLoad = 3
+  .lightgallery1 a {
+  padding: 0px 20px 20px 0;
+  display: none;
+}
 
-  function showEl(el) {
-    return el.removeClass('hidden')
-  }
-
-  $('li').each(function(index) {
-    index < maxLoad ?
-      showEl($(this)) : null
-  })
-
-  $('#loadAllImages').click(function() {
-    $('li').each(function() {
-      showEl($(this))
-    })
-  })
+.lightgallery1 a img {
+  width: 33%;
+}
+</style>
+<script>
+  $(function() {
+  $(".item").slice(0, 2).show(); // select the first ten
+  $("#load").click(function(e) { // click event for load more
+    e.preventDefault();
+    $(".item:hidden").slice(0, 2).show(); // select next 10 hidden divs and show them
+    if ($(".item:hidden").length == 0) { // check if any hidden divs still exist
+      alert("No more divs"); // alert if there are none left
+    }
+  });
 });
 </script>
-       
         
 <!--       </a> -->
 
