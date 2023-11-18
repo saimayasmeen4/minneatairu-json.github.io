@@ -64,7 +64,20 @@ div.desc {
   text-align: center;
 }
       </style>
+      
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script>
+        $(function() {
+  $(".item").slice(0, 2).show(); // select the first ten
+  $("#load").click(function(e) { // click event for load more
+    e.preventDefault();
+    $(".item:hidden").slice(0, 2).show(); // select next 10 hidden divs and show them
+    if ($(".item:hidden").length == 0) { // check if any hidden divs still exist
+      alert("No more divs"); // alert if there are none left
+    }
+  });
+});
+    </script>
         
 <!--       </a> -->
 
