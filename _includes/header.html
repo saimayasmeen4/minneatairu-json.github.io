@@ -1,33 +1,5 @@
 <header class="site-header">
-
-  <div class="wrapper">
-
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-
-    <nav class="site-nav">
-<!--       <a href="#" class="menu-icon"> -->
-
-<div class="lightgallery1"></div>
-
-<button id="load">Load More</button>
-      <style>
-       .lightgallery1 a {
-  width: 30.33%;
-  margin: auto;
-  display: inline-block;
-  padding: 0px 20px 20px 0;
-}
-
-.lightgallery1 a img {
-  width: 100%;
-}
-
-a {
- /* display: none; */
-}
-      </style>
-      
-      <script>
+  <script>
         var links = [
     "https://galleria.io/wp-content/themes/galleria/dist/images/demo/4m.jpg",
   "https://images.freeimages.com/images/large-previews/851/poppies-1369329.jpg",
@@ -69,6 +41,35 @@ function loadMore(e) {
   
 }
       </script>
+
+  <div class="wrapper">
+
+    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+
+    <nav class="site-nav">
+<!--       <a href="#" class="menu-icon"> -->
+
+<div class="lightgallery1"></div>
+
+<button id="load">Load More</button>
+      <style>
+       .lightgallery1 a {
+  width: 30.33%;
+  margin: auto;
+  display: inline-block;
+  padding: 0px 20px 20px 0;
+}
+
+.lightgallery1 a img {
+  width: 100%;
+}
+
+a {
+ /* display: none; */
+}
+      </style>
+      
+      
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        <script>
         $(function() {
