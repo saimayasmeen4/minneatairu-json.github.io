@@ -56,22 +56,10 @@
 </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
-(function() {
-  var flickerAPI = "https://blondebraids.info/search.json";
-  $.getJSON( flickerAPI, {
-    
-    format: "json"
-  })
-    .done(function( data ) {
-      $.each( data.items, function( i, item ) {
-        alert(i.url);
-        // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-        // if ( i === 3 ) {
-        //   return false;
-        // }
-      });
-    });
-})();
+
+$.getJSON( "search.json", function( json ) {
+  alert( "JSON Data: " + json.url );
+ });
 </script>
         
 <!--       </a> -->
