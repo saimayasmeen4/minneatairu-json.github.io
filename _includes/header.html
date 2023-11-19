@@ -15,7 +15,7 @@
       <div id="learnMoreModal" class="modal-info">
 
         <div class="modal-content-info">
-          <span class="close-info">CLOSE</span>
+          <span class="closeInfo">CLOSE</span>
 
           <p>BLONDE BRAIDS STUDY</p>
           <p>To demonstrate these challenges, my ongoing series, 'Blonde Braids Studies', examines the ways in which the text-to-image algorithm—Midjourney (v4)—renders a portrait of deeply melanated identical twins adorned with blonde braids. The generated image reveals substantial biases in the training data, leading to a simplified portrayal of Black identity as described in my text prompt. Contrary to the expected result, the algorithm produces an image that more closely resembles fraternal twins with blonde, permed waves instead of braids. 
@@ -65,7 +65,7 @@
   z-index: 1002; 
   left: 0;
   top: 0;
-  margin:10% 0;
+  margin:3% 0;
   width: 100%; 
   height: 100%; 
   overflow: auto; 
@@ -135,7 +135,7 @@ body{margin:0}
           width: 40%;
         }
 
-        .close-info {
+        .closeInfo {
           color: #000000;
           float: right;
           font-family: 'Inconsolata', monospace;
@@ -228,7 +228,7 @@ $(function () {
         var btn = document.getElementById("learnMoreBtn");
 
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("closeInfo")[0];
 
         // When the user clicks the button, open the modal 
         btn.onclick = function () {
