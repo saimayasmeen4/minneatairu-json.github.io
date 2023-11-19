@@ -7,7 +7,11 @@
 
     <nav class="site-nav">
       <!-- Learn More Button -->
-<button id="learnMoreBtn" class="learn-more-btn">BLONDE BRAIDS STUDY<br>BY MINNE ATAIRU<br>INFORMATION</button>
+<button id="learnMoreBtn" class="learn-more-btn">
+    <div>BLONDE BRAIDS STUDY</div>
+    <div>BY MINNE ATAIRU</div>
+<div class="info-text">INFORMATION</div>
+</button>
 
 <!-- Modal -->
 <div id="learnMoreModal" class="modal">
@@ -32,8 +36,12 @@
   #lightgallery1  {
   padding: 0px 20px 20px 0;
 }
-/* Button Styling */
+.info-text{border-top:1px solid}
 .learn-more-btn {
+   display: flex;
+    flex-direction: column; 
+    align-items: left;
+    justify-content:left; 
     position: fixed;
     top: 20px;
     font-family: 'Inconsolata', monospace;
@@ -41,7 +49,7 @@
     z-index: 1000;
       background: lime;
     box-shadow: none;
-    border: 1px solid;
+    border: 1px solid;text-align:left
 }
 
 /* Modal Styling */
@@ -60,17 +68,17 @@
 .modal-content {
       font-family: 'Inconsolata', monospace;
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 1px solid #000000;
+    width: 80%;
 }
 
 .close {
-    color: #aaa;
+    color: #000000;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+      font-family: 'Inconsolata', monospace;
+    font-size: 16px;
 }
 
 .close:hover,
