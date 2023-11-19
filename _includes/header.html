@@ -9,28 +9,25 @@
 <!--       <a href="#" class="menu-icon"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="lightgallery1">
-  <img id="images1" src="https://askhairstyle.com/wp-content/uploads/2020/05/Cute-braided-hairstyle-7-177x300.jpg"></img>
-
-
 </div>
 <div>
-<button onclick="myFunction()">Load Images</button>
+<!-- <button onclick="myFunction()">Load Images</button> -->
 </div>
 
 <style>
  
-  .lightgallery1 img {
+  .lightgallery1  {
   padding: 0px 20px 20px 0;
   display: none;
 }
 
-  .images {
+  .lightgallery1 {
   width: 100%;
   border-radius: 10px;
   height: 110px;
 }
 
-.lightgallery1 img {
+.lightgallery1 {
   width: 33%;
 }
 </style>
@@ -39,8 +36,11 @@
   function myFunction() {
     $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-     document.getElementById("images1").src=value.url.toString();
-    console.log(value.url);
+    var img = document.createElement("img");
+  img.src = value.url.toString();
+  document.getElementByClass("lightgallery1").appendChild(img);
+    //  document.getElementById("images1").src=value.url.toString();
+    // console.log(value.url);
     
     
   });
