@@ -54,15 +54,24 @@
   width: 33%;
 }
 </style>
+      <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
-  fetch("search.json")
-                .then(response => response.json())
-                .then(data => {
-                    for (var i = 0; i<data.items.length; i++){
-                        let vmovieID = data.items[i].url;
-                        alert(data.items[i].url);
-                    }
-
+(function() {
+  var flickerAPI = "https://blondebraids.info/search.json";
+  $.getJSON( flickerAPI, {
+    
+    format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.items, function( i, item ) {
+        alert(i.url);
+        // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+        // if ( i === 3 ) {
+        //   return false;
+        // }
+      });
+    });
+})();
 </script>
         
 <!--       </a> -->
