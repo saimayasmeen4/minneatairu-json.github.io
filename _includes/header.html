@@ -184,21 +184,20 @@ body{margin:0}
 $(function () {
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
-  var img = document.createElement("img");
-  img.src = value.url;
-  img.height = 150;
-  img.width = 150;
-  img.setAttribute("data-caption", value.caption); // Assuming each image has a caption field
-  img.onerror = function () {
-    this.style.display = 'none';
-  };
-  img.onclick = function () {
-    document.getElementById('fullImage').src = this.src;
-    document.getElementById('imageCaption').innerText = this.getAttribute('data-caption'); // Set the caption
-    document.getElementById('imageModal').style.display = "block";
-  }
-  document.getElementById("lightgallery1").appendChild(img);
-});
+      var img = document.createElement("img");
+      img.src = value.url;
+      img.height = 150;
+      img.width = 150;
+      img.onerror = function () {
+        this.style.display = 'none';
+      };
+      // Add click event to each image
+      img.onclick = function () {
+        document.getElementById('fullImage').src = this.src;
+        document.getElementById('imageModal').style.display = "block";
+      }
+      document.getElementById("lightgallery1").appendChild(img);
+    });
   });
 
   // Get the modal
@@ -219,6 +218,7 @@ $(function () {
     }
   }
 });
+
 
 
         // Get the modal
