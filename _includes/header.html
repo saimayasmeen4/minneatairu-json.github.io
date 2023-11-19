@@ -55,6 +55,7 @@
 }
 </style>
 <script>
+    $(function() {
   fetch("search.json")
                 .then(response => response.json())
                 .then(data => {
@@ -69,7 +70,7 @@
 //          alert(data.url);
 //      };
     //do stuff with your data here
-});
+
 });
 </script>
         
