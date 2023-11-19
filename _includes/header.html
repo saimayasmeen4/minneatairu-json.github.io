@@ -11,24 +11,6 @@
 <div class="lightgallery1">
   <img id="images1"></img>
 
-  <a href="https://www.w3schools.com/w3images/mist.jpg"><img class="images" src="https://www.w3schools.com/w3images/mist.jpg"></a>
-
-  <a href="https://picsum.photos/200" class="item"><img class="images" src="https://picsum.photos/200"></a>
-
-  <a href="https://www.w3schools.com/w3images/underwater.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/underwater.jpg"></a>
-
-  <a href="https://www.w3schools.com/w3images/paris.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/paris.jpg"></a>
-
-  <a href="https://www.w3schools.com/w3images/nature.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/nature.jpg"></a>
-
-  <a href="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg" class="item"><img class="images" src="https://images.freeimages.com/images/large-previews/fe6/midsummer-fields-1-1394719.jpg"></a>
-
-  <a href="https://www.w3schools.com/w3images/paris.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/paris.jpg"></a>
-
-  <a href="hhttps://www.w3schools.com/w3images/falls2.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/falls2.jpg"></a>
-
-  <a href="https://www.w3schools.com/w3images/wedding.jpg" class="item"><img class="images" src="https://www.w3schools.com/w3images/wedding.jpg"></a>
-
 
 </div>
 <div>
@@ -60,10 +42,11 @@
     $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
      document.getElementById("images1").src=value.url;
+    console.log(value.url);
     
     
   });
- });
+ })
     
 }
   $(function() {
