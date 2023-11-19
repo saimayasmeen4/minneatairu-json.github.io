@@ -9,7 +9,7 @@
 <!--       <a href="#" class="menu-icon"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <div class="lightgallery1">
-  <a href="https://picsum.photos/200"><img class="images" src="https://picsum.photos/200"></a>
+  <img id="images1"></img>
 
   <a href="https://www.w3schools.com/w3images/mist.jpg"><img class="images" src="https://www.w3schools.com/w3images/mist.jpg"></a>
 
@@ -39,7 +39,7 @@
   .lightgallery1 a {
   display: none;
 }
-  .lightgallery1 a {
+  .lightgallery1 img {
   padding: 0px 20px 20px 0;
   display: none;
 }
@@ -50,16 +50,17 @@
   height: 110px;
 }
 
-.lightgallery1 a img {
+.lightgallery1 img {
   width: 33%;
 }
 </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
   $(function() {
+    const image = document.getElementById('images1');
    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-         alert(value.url);
+    image.src=valur.url;
     
   });
  })
