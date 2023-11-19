@@ -57,10 +57,9 @@
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
   $(function() {
-    const image = document.getElementById('images1');
    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-    image.src=valur.url;
+    document.getElementById("images1").src=valur.url;
     
   });
  })
