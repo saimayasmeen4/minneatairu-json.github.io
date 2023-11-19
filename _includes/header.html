@@ -59,7 +59,8 @@
   $(function() {
    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-    document.getElementById("images1").src=value.url;
+    // document.getElementById("images1").src=value.url;
+    console.log(value.url);
     
   });
  })
