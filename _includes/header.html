@@ -1,158 +1,177 @@
 <header class="site-header">
-  
+
 
   <div class="wrapper">
 
     <nav class="site-nav">
       <!-- Learn More Button -->
-<button id="learnMoreBtn" class="learn-more-btn">
-    <div>BLONDE BRAIDS STUDY</div>
-    <div>BY MINNE ATAIRU</div>
-<div class="info-text">INFORMATION + </div>
-</button>
+      <button id="learnMoreBtn" class="learn-more-btn">
+        <div>BLONDE BRAIDS STUDY</div>
+        <div>BY MINNE ATAIRU</div>
+        <div class="info-text">INFORMATION + </div>
+      </button>
 
-<!-- Modal -->
-<div id="learnMoreModal" class="modal">
+      <!-- Modal -->
+      <div id="learnMoreModal" class="modal">
 
-    <div class="modal-content">
-                <span class="close">CLOSE</span>
+        <div class="modal-content">
+          <span class="close">CLOSE</span>
 
-        <p>BLONDE BRAIDS STUDY</p>
-              <p>Sample text...</p>
+          <p>BLONDE BRAIDS STUDY</p>
+          <p>Sample text...</p>
 
-    </div>
-</div>
+        </div>
+      </div>
 
-<!--       <a href="#" class="menu-icon"> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div id="lightgallery1">
-</div>
-<div>
-<!-- <button onclick="myFunction()">Load Images</button> -->
-</div>
+      <!--       <a href="#" class="menu-icon"> -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <div id="lightgallery1">
+      </div>
+      <div>
+      </div>
 
-<style>
- img{object-fit: cover; border:1px dashed black; cursor: crosshair;}
-   img:hover{cursor: crosshair;}
+      <style>
+        img {
+          object-fit: cover;
+          border: 1px dashed black;
+          cursor: crosshair;
+        }
 
-  #lightgallery1  {
-  padding: 0px 20px 20px 0;
-}
-  .learn-more-btn:hover{  background: black;color:white}
-.learn-more-btn {padding:10px;
-   display: flex;
-    flex-direction: column; 
-    align-items: left;
-    justify-content:left; 
-    position: fixed;
-    top: 20px;
-    font-family: 'Inconsolata', monospace;
-    right: 20px;
-    z-index: 1000;
-      background: lime;
-    box-shadow: none;
-    border: 1px solid;text-align:left
-}
+        img:hover {
+          cursor: crosshair;
+        }
 
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1001;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto;
-}
+        #lightgallery1 {
+          padding: 0px 20px 20px 0;
+        }
 
-.modal-content {
-      font-family: 'Inconsolata', monospace;
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #000000;
-    width: 80%;
-}
+        .learn-more-btn:hover {
+          background: black;
+          color: white
+        }
 
-.close {
-    color: #000000;
-    float: right;
-      font-family: 'Inconsolata', monospace;
-    font-size: 16px;
-}
+        .learn-more-btn {
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: left;
+          position: fixed;
+          top: 20px;
+          font-family: 'Inconsolata', monospace;
+          right: 20px;
+          z-index: 1000;
+          background: lime;
+          box-shadow: none;
+          border: 1px solid;
+          text-align: left
+        }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 1001;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+        }
 
-#lightgallery1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Adjust this as needed */
-    padding: 0px 20px 20px 0;
-    border-radius: 10px;
-}
-  #lightgallery1 img {
-    flex: 0 1 150px; /* Flex-grow, flex-shrink, and flex-basis */
-    margin: 5px; /* Optional margin for spacing */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Optional: Crop images to cover the area */
-}
+        .modal-content {
+          font-family: 'Inconsolata', monospace;
+          background-color: #fefefe;
+          margin: 15% auto;
+          padding: 20px;
+          border: 1px solid #000000;
+          width: 80%;
+        }
 
-.lightgallery1 {
-  width: 33%;
-}
-</style>
+        .close {
+          color: #000000;
+          float: right;
+          font-family: 'Inconsolata', monospace;
+          font-size: 16px;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        #lightgallery1 {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          /* Adjust this as needed */
+          padding: 0px 20px 20px 0;
+          border-radius: 10px;
+        }
+
+        #lightgallery1 img {
+          flex: 0 1 150px;
+          /* Flex-grow, flex-shrink, and flex-basis */
+          margin: 5px;
+          /* Optional margin for spacing */
+          height: auto;
+          /* Maintain aspect ratio */
+          object-fit: cover;
+          /* Optional: Crop images to cover the area */
+        }
+
+        .lightgallery1 {
+          width: 33%;
+        }
+      </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-<script>
-    
-$(function() {
-    $.getJSON("search.json", function(obj) {
-        $.each(obj, function(key, value) {
-            var img = document.createElement("img");
-            img.src = value.url;
-            img.height = 150;
-            img.width = 150;
-            img.onerror = function() {
-                this.style.display = 'none'; 
-            };
-            document.getElementById("lightgallery1").appendChild(img);
+      <script>
+
+        $(function () {
+          $.getJSON("search.json", function (obj) {
+            $.each(obj, function (key, value) {
+              var img = document.createElement("img");
+              img.src = value.url;
+              img.height = 150;
+              img.width = 150;
+              img.onerror = function () {
+                this.style.display = 'none';
+              };
+              document.getElementById("lightgallery1").appendChild(img);
+            });
+          })
         });
-    })
-});
 
-  // Get the modal
-var modal = document.getElementById("learnMoreModal");
+        // Get the modal
+        var modal = document.getElementById("learnMoreModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("learnMoreBtn");
+        // Get the button that opens the modal
+        var btn = document.getElementById("learnMoreBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+          modal.style.display = "block";
+        }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          modal.style.display = "none";
+        }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
 
-</script>
-        
-<!--       </a> -->
+      </script>
+
+
 
 
     </nav>
