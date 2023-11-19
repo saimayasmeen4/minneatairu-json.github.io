@@ -33,21 +33,24 @@
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
     
-  $(function() {
-      $.getJSON( "search.json", function(obj) {
-  $.each(obj, function(key, value) {
-    var img = document.createElement("img");
-  img.src = value.url;
-    img.height=150;
-    img.width=150
-  document.getElementById("lightgallery1").appendChild(img);
-    //  document.getElementById("images1").src=value.url.toString();
-    // console.log(value.url);
-
-  });
- })
-   
+$(function() {
+    $.getJSON("search.json", function(obj) {
+        $.each(obj, function(key, value) {
+            var img = document.createElement("img");
+            img.src = value.url;
+            img.height = 150;
+            img.width = 150;
+            // Add an onerror attribute
+            img.onerror = function() {
+                this.style.display = 'none'; // Hides the image
+                // Or replace with a placeholder image
+                // this.src = 'path/to/placeholder-image.jpg';
+            };
+            document.getElementById("lightgallery1").appendChild(img);
+        });
+    })
 });
+
 </script>
         
 <!--       </a> -->
