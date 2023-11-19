@@ -32,7 +32,7 @@
 
 </div>
 <div>
-<a href="#" id="load">Load More</a>
+<button onclick="myFunction()">Load Images</button>
 </div>
 
 <style>
@@ -56,14 +56,18 @@
 </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
-  $(function() {
-   $.getJSON( "search.json", function(obj) {
+  function myFunction() {
+    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-    // document.getElementById("images1").src=value.url;
-    console.log(value.url);
+     document.getElementById("images1").src=value.url;
+    
     
   });
- })
+ });
+    
+}
+  $(function() {
+   
 });
 </script>
         
