@@ -57,7 +57,7 @@
 <script>
   $(function() {
 $.getJSON('search.json', function(data) {
-  $.each(data.person, function(i, f) {
+  $.each(data, function(i, f) {
          alert(data.url);
      });
     //do stuff with your data here
