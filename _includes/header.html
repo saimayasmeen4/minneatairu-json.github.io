@@ -56,10 +56,13 @@
 </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
-
-$.getJSON( "search.json", function( json ) {
-  alert( "JSON Data: " + json.url );
- });
+  $(function() {
+   $.getJSON( "search.json", function(obj) {
+  $.each(obj, function(key, value) {
+         alert(obj);
+  });
+ })
+});
 </script>
         
 <!--       </a> -->
