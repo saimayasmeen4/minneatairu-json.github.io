@@ -8,7 +8,7 @@
     <nav class="site-nav">
 <!--       <a href="#" class="menu-icon"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<div class="lightgallery1">
+<div id="lightgallery1">
 </div>
 <div>
 <button onclick="myFunction()">Load Images</button>
@@ -16,12 +16,11 @@
 
 <style>
  
-  .lightgallery1  {
+  #lightgallery1  {
   padding: 0px 20px 20px 0;
-  display: none;
 }
 
-  .lightgallery1 {
+  #lightgallery1 {
   width: 100%;
   border-radius: 10px;
   height: 110px;
@@ -33,21 +32,18 @@
 </style>
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script>
-  function myFunction() {
-    $.getJSON( "search.json", function(obj) {
+    
+  $(function() {
+      $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
     var img = document.createElement("img");
-  img.src = value.url.toString();
-  document.getElementByClass("lightgallery1").appendChild(img);
+  img.src = value.url;
+  document.getElementById("lightgallery1").appendChild(img);
     //  document.getElementById("images1").src=value.url.toString();
     // console.log(value.url);
-    
-    
+
   });
  })
-    
-}
-  $(function() {
    
 });
 </script>
