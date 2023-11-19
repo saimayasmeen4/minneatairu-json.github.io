@@ -59,9 +59,8 @@
   $(function() {
    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-    if(key =="url"){
-         alert(value);
-    }
+         alert(value.url);
+    
   });
  })
 });
