@@ -59,7 +59,7 @@
   $(function() {
    $.getJSON( "search.json", function(obj) {
   $.each(obj, function(key, value) {
-    document.getElementById("images1").src=valur.url;
+    document.getElementById("images1").src=value.url;
     
   });
  })
