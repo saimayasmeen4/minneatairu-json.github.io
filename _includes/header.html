@@ -57,9 +57,9 @@
 <script>
   $(function() {
 $.getJSON('search.json', function(data) {
-  $.each(data, function(i, f) {
+  $.each(data) {
          alert(data.url);
-     });
+     };
     //do stuff with your data here
 });
 });
