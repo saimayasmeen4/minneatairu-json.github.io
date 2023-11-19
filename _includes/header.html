@@ -55,7 +55,6 @@
 }
 </style>
 <script>
-    $(function() {
   fetch("search.json")
                 .then(response => response.json())
                 .then(data => {
@@ -63,14 +62,7 @@
                         let vmovieID = data.items[i].url;
                         alert(data.items[i].url);
                     }
-//   $(function() {
-// $.getJSON('search.json', function(data) {
-//   $.each(data) {
-//          alert(data.url);
-//      };
-    //do stuff with your data here
 
-});
 </script>
         
 <!--       </a> -->
