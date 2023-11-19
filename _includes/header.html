@@ -8,7 +8,7 @@
       <button id="learnMoreBtn" class="learn-more-btn">
         <div>BLONDE BRAIDS STUDY</div>
         <div>BY MINNE ATAIRU</div>
-        <div class="info-text">DATASET INFORMATION + </div>
+        <div class="info-text">DATASET INFORMATION  </div>
       </button>
 
       <!-- Modal -->
@@ -18,7 +18,10 @@
           <span class="close">CLOSE</span>
 
           <p>BLONDE BRAIDS STUDY</p>
-          <p>Sample text...</p>
+          <p>To demonstrate these challenges, my ongoing series, 'Blonde Braids Studies', examines the ways in which the text-to-image algorithm—Midjourney (v4)—renders a portrait of deeply melanated identical twins adorned with blonde braids. The generated image reveals substantial biases in the training data, leading to a simplified portrayal of Black identity as described in my text prompt. Contrary to the expected result, the algorithm produces an image that more closely resembles fraternal twins with blonde, permed waves instead of braids. 
+</p>
+            <p></p>Midjourney utilizes the publicly available LAION-5B dataset for training. A search using a keyword from my text prompt—'Blonde Box Braids'—predominantly retrieves images of caramel-skinned Black women. This outcome highlights an underrepresentation bias within the dataset, where certain skin tones and features are significantly less visible or entirely absent in the dataset, thus limiting the algorithm's ability to accurately render a wide spectrum of Black identities.
+            </p>
 
         </div>
       </div>
@@ -105,20 +108,14 @@
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
-          /* Adjust this as needed */
           padding: 0px 20px 20px 0;
           border-radius: 10px;
         }
 
         #lightgallery1 img {
           flex: 0 1 150px;
-          /* Flex-grow, flex-shrink, and flex-basis */
-          margin: 5px;
-          /* Optional margin for spacing */
           height: auto;
-          /* Maintain aspect ratio */
           object-fit: cover;
-          /* Optional: Crop images to cover the area */
         }
 
         .lightgallery1 {
