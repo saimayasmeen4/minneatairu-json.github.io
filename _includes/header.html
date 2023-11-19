@@ -38,6 +38,8 @@
   $.each(obj, function(key, value) {
     var img = document.createElement("img");
   img.src = value.url;
+    img.height=150;
+    img.width=150
   document.getElementById("lightgallery1").appendChild(img);
     //  document.getElementById("images1").src=value.url.toString();
     // console.log(value.url);
