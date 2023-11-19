@@ -108,26 +108,21 @@
         }
 
         #lightgallery1 {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-          padding: 0px 20px 20px 0;
-          border-radius: 10px;
-          position: absolute;
-    top: 100%; /* Start from the bottom of the parent */
-        }
-        #lightgallery1-parent { /* Replace with the actual parent ID or class */
-    height: 400px; /* Example height */
-    overflow: hidden;
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start */
+    padding: 0;
+    margin: 0;
 }
+ 
 
 
         #lightgallery1 img {
           flex: 0 1 150px;
           height: auto;
           object-fit: cover;
-        }
+          margin: 0;
+    padding: 0; 
 
         .lightgallery1 {
           width: 33%;
@@ -177,22 +172,6 @@
           }
         }
 
-        function animateGallery() {
-    var $gallery = $('#lightgallery1');
-    var galleryHeight = $gallery.height();
-    var parentHeight = $gallery.parent().height();
-
-    // Reset position if it's moved up completely out of view
-    if (parseInt($gallery.css('top')) < -galleryHeight) {
-        $gallery.css('top', parentHeight);
-    } else {
-        // Move the gallery up
-        $gallery.animate({top: '-=' + galleryHeight}, 5000, 'linear', animateGallery);
-    }
-}
-
-// Initialize the animation
-animateGallery();
 
 
       </script>
