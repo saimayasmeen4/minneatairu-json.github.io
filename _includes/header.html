@@ -30,7 +30,7 @@
 </div>
 
 <style>
- img{object-fit: cover; border:1px dashed black}
+ img{object-fit: cover; border:1px dashed black; cursor: crosshair;}
   #lightgallery1  {
   padding: 0px 20px 20px 0;
 }
@@ -112,11 +112,8 @@ $(function() {
             img.src = value.url;
             img.height = 150;
             img.width = 150;
-            // Add an onerror attribute
             img.onerror = function() {
-                this.style.display = 'none'; // Hides the image
-                // Or replace with a placeholder image
-                // this.src = 'path/to/placeholder-image.jpg';
+                this.style.display = 'none'; 
             };
             document.getElementById("lightgallery1").appendChild(img);
         });
