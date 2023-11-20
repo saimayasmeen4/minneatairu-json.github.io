@@ -237,9 +237,7 @@ border:1px solid;
   background-color: lime; 
 }
 
-#lightgallery1 img.loaded {
-  opacity: 1;
-}
+
 
 #lightgallery1 {
     display: grid;
@@ -282,7 +280,9 @@ $(function () {
       img.src = value.url;
       img.height = 150;
       img.width = 150;
-      img.classList.add("lazy-load"); // Add a class for lazy loading
+      img.onerror = function () {
+        this.style.display = 'none';
+      };
       // Add click event to each image
       img.onclick = function () {
         document.getElementById('fullImage').src = this.src;
@@ -291,21 +291,9 @@ $(function () {
       document.getElementById("lightgallery1").appendChild(img);
     });
     // After adding all images, update the count
-    var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
-    document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
-
-    // Lazy load the images
-    var lazyImages = document.querySelectorAll(".lazy-load");
-    lazyImages.forEach(function (lazyImage) {
-      lazyImage.onload = function () {
-        lazyImage.classList.add("loaded"); // Add the "loaded" class for fade-in effect
-      };
-    });
+  var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
+  document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
-
-  // Rest of your JavaScript code
-});
-
 
   // Get the modal
   var modal = document.getElementById('imageModal');
