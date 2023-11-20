@@ -128,11 +128,12 @@
           display: none;
           position: fixed;
           z-index: 1001;
-     
-          left: 0; /* Align to the left side of the screen */
-  top: 0; /* Align to the top of the screen */
-  width: 50%; /* Takes up half of the screen width */
-  height: 100%;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          
         }
 
         body{margin:0}
@@ -174,8 +175,10 @@
         .modal-content-info {
           font-family: 'Inconsolata', monospace;
           background-color: #fefefe;
+          margin: 15% auto;
           padding: 5rem;
           border: 1px solid #000000;
+          width: 40%;
         }
 
         .closeInfo {
@@ -235,6 +238,11 @@ border:1px solid;
     #lightgallery1 {
         grid-template-columns: repeat(4, 1fr); /* 4 equal columns for mobile */
     }
+    .modal-content-info {
+
+          padding: 25px;
+          width: 80%;
+        }
 }
 
 
