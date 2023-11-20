@@ -5,7 +5,8 @@
 
     <nav class="site-nav">
 
-      
+      <div id="imageCount">Number of images: 0</div>
+
       <div class="fixed-column">
 
       <button id="learnMoreBtn" class="learn-more-btn">
@@ -171,6 +172,11 @@
           text-align: center; width: 170px;
           top:120px;
         }
+        #imageCount {
+  font-family: 'Inconsolata', monospace;
+  color: #000;
+  /* Additional styling as needed */
+}
 
         .modal-content-info {
           font-family: 'Inconsolata', monospace;
@@ -267,6 +273,9 @@ $(function () {
       }
       document.getElementById("lightgallery1").appendChild(img);
     });
+    // After adding all images, update the count
+  var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
+  document.getElementById("imageCount").innerText = 'Number of images: ' + imageCount;
   });
 
   // Get the modal
