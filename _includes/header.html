@@ -251,46 +251,23 @@ border:1px solid;
       <script>
 
 $(function () {
-  var itemsToShow = 12; // Number of items to show initially
-  var itemsTotal; // Total number of items
-  var imagesLoaded = 0; // Counter for loaded images
-
-  // Function to load images
-  function loadImages() {
-    $.getJSON("search.json", function (obj) {
-      itemsTotal = obj.length;
-      $.each(obj, function (key, value) {
-        if (key < imagesLoaded + itemsToShow) {
-          var img = document.createElement("img");
-          img.src = value.url;
-          img.height = 150;
-          img.width = 150;
-          img.onerror = function () {
-            this.style.display = 'none';
-          };
-          img.onclick = function () {
-            document.getElementById('fullImage').src = this.src;
-            document.getElementById('imageModal').style.display = "block";
-          }
-          document.getElementById("lightgallery1").appendChild(img);
-        }
-      });
-      imagesLoaded += itemsToShow;
-      if (imagesLoaded >= itemsTotal) {
-        $('#loadMoreBtn').hide();
+  $.getJSON("search.json", function (obj) {
+    $.each(obj, function (key, value) {
+      var img = document.createElement("img");
+      img.src = value.url;
+      img.height = 150;
+      img.width = 150;
+      img.onerror = function () {
+        this.style.display = 'none';
+      };
+      // Add click event to each image
+      img.onclick = function () {
+        document.getElementById('fullImage').src = this.src;
+        document.getElementById('imageModal').style.display = "block";
       }
+      document.getElementById("lightgallery1").appendChild(img);
     });
-  }
-
-  // Initial load
-  loadImages();
-
-  // Load more on button click
-  $('#loadMoreBtn').click(function () {
-    loadImages();
   });
-});
-
 
   // Get the modal
   var modal = document.getElementById('imageModal');
