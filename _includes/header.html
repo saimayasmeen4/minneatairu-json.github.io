@@ -50,6 +50,7 @@
   </div>
 </div>
 
+<button id="loadMoreBtn">Load More</button>
 
 
       <!--       <a href="#" class="menu-icon"> -->
@@ -219,11 +220,10 @@ border:1px solid;
 
 #lightgallery1 {
     display: grid;
-    grid-template-columns: repeat(12, 1fr); /* 12 equal columns */
-    gap: 10px; /* Adjust as needed for spacing between images */
+    grid-template-columns: repeat(12, 1fr); 
     padding: 0;
     margin: 0;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%;
 }
  
 #lightgallery1 img {
@@ -251,23 +251,46 @@ border:1px solid;
       <script>
 
 $(function () {
-  $.getJSON("search.json", function (obj) {
-    $.each(obj, function (key, value) {
-      var img = document.createElement("img");
-      img.src = value.url;
-      img.height = 150;
-      img.width = 150;
-      img.onerror = function () {
-        this.style.display = 'none';
-      };
-      // Add click event to each image
-      img.onclick = function () {
-        document.getElementById('fullImage').src = this.src;
-        document.getElementById('imageModal').style.display = "block";
+  var itemsToShow = 12; // Number of items to show initially
+  var itemsTotal; // Total number of items
+  var imagesLoaded = 0; // Counter for loaded images
+
+  // Function to load images
+  function loadImages() {
+    $.getJSON("search.json", function (obj) {
+      itemsTotal = obj.length;
+      $.each(obj, function (key, value) {
+        if (key < imagesLoaded + itemsToShow) {
+          var img = document.createElement("img");
+          img.src = value.url;
+          img.height = 150;
+          img.width = 150;
+          img.onerror = function () {
+            this.style.display = 'none';
+          };
+          img.onclick = function () {
+            document.getElementById('fullImage').src = this.src;
+            document.getElementById('imageModal').style.display = "block";
+          }
+          document.getElementById("lightgallery1").appendChild(img);
+        }
+      });
+      imagesLoaded += itemsToShow;
+      if (imagesLoaded >= itemsTotal) {
+        $('#loadMoreBtn').hide();
       }
-      document.getElementById("lightgallery1").appendChild(img);
     });
+  }
+
+  // Initial load
+  loadImages();
+
+  // Load more on button click
+  $('#loadMoreBtn').click(function () {
+    loadImages();
   });
+});
+
 
   // Get the modal
   var modal = document.getElementById('imageModal');
