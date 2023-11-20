@@ -219,7 +219,7 @@ border:1px solid;
 
 #lightgallery1 {
     display: grid;
-    grid-template-columns: repeat(8, 1fr); /* 8 equal columns */
+    grid-template-columns: repeat(12, 1fr); /* 12 equal columns */
     gap: 10px; /* Adjust as needed for spacing between images */
     padding: 0;
     margin: 0;
@@ -234,6 +234,11 @@ border:1px solid;
     padding: 0;
 }
 
+@media screen and (max-width: 768px) {
+    #lightgallery1 {
+        grid-template-columns: repeat(4, 1fr); /* 4 equal columns for mobile */
+    }
+}
 
 
       </style>
