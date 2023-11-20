@@ -37,12 +37,18 @@
 
         </div>
       </div>
+
       <div id="imageModal" class="modal">
-        <span class="close" onclick="closeImageModal()">CLOSE</span>
-        <img id="modalImage" src="" style="max-width: 100%; height: auto;">
-        <p id="caption"></p> <!-- Caption display -->
+        <span class="close">CLOSE</span>
+        <img class="modal-content" id="fullImage">
       </div>
       
+<div id="imageModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeImageModal()">CLOSE</span>
+    <img id="modalImage" src="" style="max-width: 100%; height: auto;">
+  </div>
+</div>
 
 
 
@@ -189,11 +195,6 @@
           cursor: pointer;
         }
 body{background: lime;}
-#caption {
-  color: #000;
-  font-family: 'Inconsolata', monospace;
-  /* Additional styling as needed */
-}
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -251,24 +252,22 @@ border:1px solid;
 
 $(function () {
   $.getJSON("search.json", function (obj) {
-  $.each(obj, function (key, value) {
-    var img = document.createElement("img");
-    img.src = value.url;
-    img.height = 150;
-    img.width = 150;
-    img.setAttribute('data-caption', value.caption); // Store the caption
-    img.onerror = function () {
-      this.style.display = 'none';
-    };
-    img.onclick = function () {
-      document.getElementById('fullImage').src = this.src;
-      document.getElementById('caption').innerText = this.getAttribute('data-caption'); // Display the caption
-      document.getElementById('imageModal').style.display = "block";
-    }
-    document.getElementById("lightgallery1").appendChild(img);
+    $.each(obj, function (key, value) {
+      var img = document.createElement("img");
+      img.src = value.url;
+      img.height = 150;
+      img.width = 150;
+      img.onerror = function () {
+        this.style.display = 'none';
+      };
+      // Add click event to each image
+      img.onclick = function () {
+        document.getElementById('fullImage').src = this.src;
+        document.getElementById('imageModal').style.display = "block";
+      }
+      document.getElementById("lightgallery1").appendChild(img);
+    });
   });
-});
-
 
   // Get the modal
   var modal = document.getElementById('imageModal');
