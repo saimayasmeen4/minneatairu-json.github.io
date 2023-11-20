@@ -157,16 +157,32 @@
     padding: 0;
     margin: 0;
 }
- 
 
 
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 10px; /* Adjust the gap as needed */
+  }
 
-        #lightgallery1 img {
+  .wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border: 1px solid black;
+    cursor: crosshair;
+  }
+
+  .wrapper img:hover {
+    cursor: crosshair;
+  }
+
+#lightgallery1 img {
           flex: 0 1 150px;
           height: auto;
           object-fit: cover;
           margin: 0;
-    padding: 0; 
+    padding: 0; }
 
         .lightgallery1 {
           width: 33%;
@@ -252,4 +268,4 @@ $(function () {
 
   </div>
 
-</header>
+</header> 
