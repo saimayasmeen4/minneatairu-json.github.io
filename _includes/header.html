@@ -37,12 +37,6 @@
 
         </div>
       </div>
-
-      <div id="imageModal" class="modal">
-        <span class="close">CLOSE</span>
-        <img class="modal-content" id="fullImage">
-      </div>
-      
       <div id="imageModal" class="modal">
         <span class="close" onclick="closeImageModal()">CLOSE</span>
         <img id="modalImage" src="" style="max-width: 100%; height: auto;">
@@ -69,11 +63,6 @@
         img:hover {
           cursor: crosshair;
         }
-        #caption {
-  color: #000;
-  font-family: 'Inconsolata', monospace;
-  /* Additional styling as needed */
-}
 
 .fixed-column {
     position: fixed; /* Fixed positioning */
@@ -200,6 +189,11 @@
           cursor: pointer;
         }
 body{background: lime;}
+#caption {
+  color: #000;
+  font-family: 'Inconsolata', monospace;
+  /* Additional styling as needed */
+}
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -255,7 +249,8 @@ border:1px solid;
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
       <script>
 
-$.getJSON("search.json", function (obj) {
+$(function () {
+  $.getJSON("search.json", function (obj) {
   $.each(obj, function (key, value) {
     var img = document.createElement("img");
     img.src = value.url;
