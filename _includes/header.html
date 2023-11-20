@@ -172,13 +172,6 @@
           cursor: pointer;
         }
 
-        #lightgallery1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Align items to the start */
-    padding: 0;
-    margin: 0;
-}
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -200,13 +193,23 @@ border:1px solid;
 
 
 
-
+#lightgallery1 {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* 8 equal columns */
+    gap: 10px; /* Adjust as needed for spacing between images */
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Ensure it takes full width */
+}
+ 
 #lightgallery1 img {
-          flex: 0 1 150px;
-          height: auto;
-          object-fit: cover;
-          margin: 0;
-    padding: 0; }
+    width: 100%; /* Full width of the grid column */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
 
 
       </style>
