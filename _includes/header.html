@@ -41,12 +41,12 @@
         <img class="modal-content" id="fullImage">
       </div>
       
-<div id="imageModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeImageModal()">CLOSE</span>
-    <img id="modalImage" src="" style="max-width: 100%; height: auto;">
-  </div>
-</div>
+      <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="fullImage">
+        <div id="imageCaption" class="image-caption"></div> <!-- Caption element -->
+      </div>
+      
 
 
 
@@ -239,6 +239,8 @@ border:1px solid;
 $(function () {
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
+      var imgContainer = document.createElement("div");
+
       var img = document.createElement("img");
       img.src = value.url;
       img.height = 150;
@@ -246,12 +248,21 @@ $(function () {
       img.onerror = function () {
         this.style.display = 'none';
       };
-      // Add click event to each image
+
       img.onclick = function () {
         document.getElementById('fullImage').src = this.src;
+        document.getElementById('imageCaption').textContent = value.caption; // Update caption
         document.getElementById('imageModal').style.display = "block";
       }
-      document.getElementById("lightgallery1").appendChild(img);
+
+      var caption = document.createElement("p");
+      caption.textContent = value.caption;
+      caption.style.display = "none"; // Hide it initially
+
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(caption);
+
+      document.getElementById("lightgallery1").appendChild(imgContainer);
     });
   });
 
