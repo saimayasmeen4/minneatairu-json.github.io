@@ -10,6 +10,9 @@
         <div>BY MINNE ATAIRU</div>
         <div class="info-text">DATASET INFORMATION  </div>
       </button>
+      <button class="ai-btn">
+        <div>VIEW THE PROJECT</div>
+      </button>
 
       <!-- Modal -->
       <div id="learnMoreModal" class="modal-info">
@@ -130,6 +133,23 @@
           text-align: left
         }
 
+        .ai-btn {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: left;
+          position: fixed;
+          top: 120px;
+          font-family: 'Inconsolata', monospace;
+          right: 20px;
+          z-index: 1000;
+          background: lime;
+          box-shadow: none;
+          border: 1px solid;
+          text-align: left
+        }
+
         .modal-content-info {
           font-family: 'Inconsolata', monospace;
           background-color: #fefefe;
@@ -164,7 +184,7 @@
 #backToTopBtn {
   display: none; /* Initially hide the button */
   position: fixed;
-  top: 120px;
+  top: 140px;
   font-family: 'Inconsolata', monospace;
 border:1px solid;
   right: 20px;
