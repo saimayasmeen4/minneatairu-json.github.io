@@ -9,7 +9,23 @@
     // Positioning context for the mobile navigation icon
     position: relative;
 }
-
+body{margin:0}
+        .learn-more-btn {
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: left;
+          justify-content: left;
+          position: fixed;
+          top: 20px;
+          font-family: 'Inconsolata', monospace;
+          right: 20px;
+          z-index: 1000;
+          background: lime;
+          box-shadow: none;
+          border: 1px solid;
+          text-align: left
+        }
 .site-title {
     font-size: 26px;
     line-height: 56px;
