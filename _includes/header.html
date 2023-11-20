@@ -5,10 +5,7 @@
 
     <nav class="site-nav">
 
-      <div id="lightgallery1">
-        <!-- Images and captions will be appended here by JavaScript -->
-    </div>
-    
+      
       <div class="fixed-column">
 
       <button id="learnMoreBtn" class="learn-more-btn">
@@ -197,16 +194,6 @@
           cursor: pointer;
         }
 
-        .image-container {
-    margin-bottom: 20px; /* Space between each image-caption pair */
-}
-
-.image-caption {
-    font-size: 14px; /* Example font size for captions */
-    color: #333; /* Caption text color */
-    margin-top: 5px; /* Space between image and caption */
-    /* Add more styling as needed */
-}
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -252,32 +239,23 @@ border:1px solid;
       <script>
 
 $(function () {
-    $.getJSON("search.json", function (obj) {
-        $.each(obj, function (key, value) {
-            // Create the image element
-            var img = document.createElement("img");
-            img.src = value.url; // Assuming 'url' is the key for the image URL in your JSON
-            img.alt = "Image"; // Add an alt attribute for accessibility
-
-            // Create a div or span for the caption
-            var caption = document.createElement("div");
-            caption.textContent = value.caption; // Assuming 'caption' is the key for the caption in your JSON
-            caption.className = "image-caption"; // Add a class for styling
-
-            // Create a container for each image and its caption
-            var container = document.createElement("div");
-            container.className = "image-container"; // Add a class for styling
-
-            // Append the image and caption to the container
-            container.appendChild(img);
-            container.appendChild(caption);
-
-            // Append the container to the gallery
-            document.getElementById("lightgallery1").appendChild(container);
-        });
+  $.getJSON("search.json", function (obj) {
+    $.each(obj, function (key, value) {
+      var img = document.createElement("img");
+      img.src = value.url;
+      img.height = 150;
+      img.width = 150;
+      img.onerror = function () {
+        this.style.display = 'none';
+      };
+      // Add click event to each image
+      img.onclick = function () {
+        document.getElementById('fullImage').src = this.src;
+        document.getElementById('imageModal').style.display = "block";
+      }
+      document.getElementById("lightgallery1").appendChild(img);
     });
-});
-
+  });
 
   // Get the modal
   var modal = document.getElementById('imageModal');
