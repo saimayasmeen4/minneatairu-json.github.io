@@ -4,7 +4,8 @@
   <div class="wrapper">
 
     <nav class="site-nav">
-      <!-- Learn More Button -->
+      <div class="fixed-column">
+
       <button id="learnMoreBtn" class="learn-more-btn">
         <div>BLONDE BRAIDS STUDY</div>
         <div>BY MINNE ATAIRU</div>
@@ -13,6 +14,9 @@
       <button class="ai-btn">
         <div>VIEW THE SERIES</div>
       </button>
+
+      <button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
+</div>
 
       <!-- Modal -->
       <div id="learnMoreModal" class="modal-info">
@@ -44,7 +48,6 @@
   </div>
 </div>
 
-<button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
 
 
       <!--       <a href="#" class="menu-icon"> -->
@@ -64,6 +67,17 @@
         img:hover {
           cursor: crosshair;
         }
+
+        .fixed-column {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Align to the top */
+    right: 0; /* Align to the right */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (right) */
+    padding: 10px; /* Add some padding around */
+    z-index: 1000; /* Ensure it's above other elements */
+}
 
 .modal {
   display: none; 
@@ -113,6 +127,7 @@
           width: 100%;
           height: 100%;
           overflow: auto;
+          
         }
 
         body{margin:0}
@@ -131,6 +146,7 @@
           box-shadow: none;
           border: 1px solid;
           text-align: left;width: 170px;
+          margin-bottom: 10px;
         }
 
         .ai-btn {
@@ -139,7 +155,7 @@
           align-items: center;
           justify-content: center;
           position: fixed;
-          top: 120px;
+          margin-bottom: 10px;
           font-family: 'Inconsolata', monospace;
           right: 20px;
           z-index: 1000;
@@ -176,7 +192,7 @@
 #backToTopBtn {
   display: none; /* Initially hide the button */
   position: fixed;
-  top: 180px;
+  margin-bottom: 10px;
   width:170px;text-align: center;
   font-family: 'Inconsolata', monospace;
 border:1px solid;
