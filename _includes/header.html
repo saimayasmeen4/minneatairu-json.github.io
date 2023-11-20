@@ -330,16 +330,19 @@ $(function () {
           modal1.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
-      // Existing function
+// When the user clicks anywhere outside of the modals, close them
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    if (event.target == modal1) {
-        modal1.style.display = "none";
-    }
+  var imageModal = document.getElementById('imageModal');
+  var learnMoreModal = document.getElementById('learnMoreModal');
+
+  if (event.target == imageModal) {
+    imageModal.style.display = "none";
+  } else if (event.target == learnMoreModal) {
+    learnMoreModal.style.display = "none";
+  }
 }
+
+
 
 
 function scrollToTop() {
