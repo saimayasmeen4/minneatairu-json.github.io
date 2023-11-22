@@ -272,12 +272,17 @@ button#backToTopBtn:hover {
  
 #lightgallery1 img {
     width: 100%; 
-    height: auto; 
+    height: 100%; 
     object-fit: cover;
     padding: 0;
     margin: 0 -1px -1px 0;
 }
 
+#lightgallery1 div {
+    position: relative;
+    width: 100%; /* Full width of the column */
+    overflow: hidden; /* This will hide the part of the image that overflows the square container */
+}
 @media screen and (max-width: 768px) {
     #lightgallery1 {
         grid-template-columns: repeat(4, 1fr); /* 4 equal columns for mobile */
@@ -429,26 +434,37 @@ $(document).ready(function() {
     var maxColumns = screenWidth <= 768 ? 4 : 12;
     var currentColumns = screenWidth <= 768 ? 4 : 12;
 
-    function updateGridColumnCount() {
+    function updateGrid() {
         $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
+        updateSquareImages();
+    }
+
+    function updateSquareImages() {
+        $('#lightgallery1 div').each(function() {
+            var width = $(this).width();
+            $(this).css('height', width + 'px'); // Set height equal to the current width
+        });
     }
 
     $("#zoomIn").click(function() {
         if (currentColumns > minColumns) {
             currentColumns--; // Decrease columns
-            updateGridColumnCount();
+            updateGrid();
         }
     });
 
     $("#zoomOut").click(function() {
         if (currentColumns < maxColumns) {
             currentColumns++; // Increase columns
-            updateGridColumnCount();
+            updateGrid();
         }
     });
 
-    updateGridColumnCount(); // Initialize with the default settings
+    $(window).on('resize load', updateSquareImages);
+
+    updateGrid(); // Initialize with the default settings
 });
+
 
 $(window).on('resize load', function() {
     $('#lightgallery1 img').each(function() {
