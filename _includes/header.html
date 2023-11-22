@@ -316,6 +316,14 @@ $(function () {
     imageElement.appendChild(overlay);
   }
 
+   // Function to handle image click
+   function onImageClick(event) {
+    var modal = document.getElementById('imageModal');
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = event.target.src; // Set the src of the modal image to the clicked image
+  }
+  
   // Modify existing image loading function
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
@@ -324,12 +332,14 @@ $(function () {
       img.src = value.url;
       img.height = 150;
       img.width = 150;
+      img.onclick = onImageClick;
       img.onerror = function () {
         this.style.display = 'none';
       };
       imgWrapper.appendChild(img);
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
+      
 
     });
     // After adding all images, update the count
