@@ -128,30 +128,7 @@
   font-family: 'Inconsolata', monospace;
 
 }
-.broken-image-placeholder {
-  width: 150px;
-  height: 150px;
-  background-color: limegreen;
-  position: relative;
-}
 
-.broken-image-placeholder::before, .broken-image-placeholder::after {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: 100%;
-  top: 0;
-  left: 50%;
-  background-color: black;
-}
-
-.broken-image-placeholder::before {
-  transform: rotate(45deg);
-}
-
-.broken-image-placeholder::after {
-  transform: rotate(-45deg);
-}
 
         .learn-more-btn:hover, .ai-btn:hover, #backToTopBt:hover, .zoom-btn:hover{
           background: black;
@@ -343,7 +320,7 @@ $(function () {
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
 
-  function createBrokenImagePlaceholder() {
+    function createBrokenImagePlaceholder() {
     var placeholder = document.createElement("div");
     placeholder.className = 'broken-image-placeholder';
     return placeholder;
