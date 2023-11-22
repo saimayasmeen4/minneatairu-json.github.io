@@ -430,22 +430,22 @@ $(document).ready(function() {
     var minColumns = 2;
     var maxColumns = screenWidth <= 768 ? 4 : 12;
     var currentColumns = screenWidth <= 768 ? 4 : 12;
-    var baseImageHeight = 150; // Adjust this value as needed
+    var baseImageSize = 150; // base size for width and height
     var zoomFactor = 1; // Factor by which image size changes
-    var maxZoomFactor = 2; // Maximum zoom factor
-    var minZoomFactor = 0.5; // Minimum zoom factor
-    var zoomIncrement = 0.2; // Adjust the zoom level increment
 
-    function updateGridColumns() {
+    function updateGridImages() {
         $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
-        $("#lightgallery1 img").css("height", baseImageHeight * zoomFactor + "px");
+        $("#lightgallery1 img").css({
+          "height": baseImageSize * zoomFactor + "px",
+          "width": baseImageSize * zoomFactor + "px" // Set width equal to height
+        });
     }
 
     $("#zoomIn").click(function() {
         if (currentColumns > minColumns) {
             currentColumns--; // Decrease columns
             zoomFactor += 0.1; // Increase zoom factor
-            updateGridColumns();
+            updateGridImages();
         }
     });
 
@@ -453,12 +453,13 @@ $(document).ready(function() {
         if (currentColumns < maxColumns) {
             currentColumns++; // Increase columns
             zoomFactor -= 0.1; // Decrease zoom factor
-            updateGridColumns();
+            updateGridImages();
         }
     });
 
-    updateGridColumns(); // Initialize with the default settings
+    updateGridImages(); // Initialize with the default settings
 });
+
 
 
 
