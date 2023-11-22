@@ -306,15 +306,15 @@ $(function () {
     container.style.display = 'flex';
     container.style.alignItems = 'center';
     container.style.justifyContent = 'center';
-    container.style.width = '100%'; // Set width to 100% of the container
-    container.style.height = '150px'; // Fixed height
+    container.style.width = '100%';
+    container.style.height = '150px';
 
     var line1 = document.createElement("div");
     var line2 = document.createElement("div");
 
     line1.style.position = line2.style.position = 'absolute';
-    line1.style.height = line2.style.height = '2px';
-    line1.style.width = line2.style.width = '100%'; // Line width to 100% of the container
+    line1.style.height = line2.style.height = '1px';
+    line1.style.width = line2.style.width = '100%';
     line1.style.backgroundColor = line2.style.backgroundColor = 'black';
     line1.style.transform = 'rotate(45deg)';
     line2.style.transform = 'rotate(-45deg)';
@@ -322,21 +322,19 @@ $(function () {
     container.appendChild(line1);
     container.appendChild(line2);
   }
-
   // Modify existing image loading function
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
       var imgWrapper = document.createElement("div");
-      imgWrapper.style.width = '100%'; // Ensure wrapper takes 100% of column width
       var img = document.createElement("img");
-      img.style.width = '100%'; // Set image width to 100%
-      img.style.height = '150px'; // Set a fixed height for the image
       img.src = value.url;
+      img.height = 150;
+      img.width = 150;
       img.onerror = function () {
         createXMark(imgWrapper); // Create X mark on error
       };
       imgWrapper.appendChild(img);
-      addNumberOverlay(imgWrapper); // Add number overlay
+      addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
 
     });
