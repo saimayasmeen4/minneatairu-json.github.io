@@ -218,7 +218,7 @@
           font-size: 16px;
         }
 
-        .close:hover,
+.close:hover,
         .close:focus {
           color: black;
           text-decoration: none;
@@ -399,29 +399,29 @@ window.onscroll = function () {
 
 $(document).ready(function() {
     var minColumns = 2;
-    var maxColumns = 12;
-    var currentColumns = 12; // Start with the maximum columns
+    var maxColumns = 4; // Set the maximum columns to 4 for mobile
+    var currentColumns = 4; // Start with the maximum columns for mobile
 
     function updateGridColumns() {
-        $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
+      $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
     }
 
     $("#zoomIn").click(function() {
-        if (currentColumns > minColumns) {
-            currentColumns -= 2; // Decrease columns by 2
-            updateGridColumns();
-        }
+      if (currentColumns > minColumns) {
+        currentColumns--; // Decrease columns by 1 for mobile
+        updateGridColumns();
+      }
     });
 
     $("#zoomOut").click(function() {
-        if (currentColumns < maxColumns) {
-            currentColumns += 2; // Increase columns by 2
-            updateGridColumns();
-        }
+      if (currentColumns < maxColumns) {
+        currentColumns++; // Increase columns by 1 for mobile
+        updateGridColumns();
+      }
     });
 
-    updateGridColumns(); // Initialize with the default column setting
-});
+    updateGridColumns(); // Initialize with the default column setting for mobile
+  });
 
 
       </script>
