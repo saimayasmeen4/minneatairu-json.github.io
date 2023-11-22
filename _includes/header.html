@@ -5,7 +5,9 @@
 
     <nav class="site-nav">
 
-
+      <button id="zoomIn">+</button>
+      <button id="zoomOut">-</button>
+      
       <div class="fixed-column">
         <button id="imageCount" class="image-count">IMAGE COUNT: 0</button>
 
@@ -366,6 +368,32 @@ window.onscroll = function () {
     backToTopBtn.style.display = "none";
   }
 };
+
+$(document).ready(function() {
+    var minColumns = 2;
+    var maxColumns = 12;
+    var currentColumns = 12; // Start with the maximum columns
+
+    function updateGridColumns() {
+        $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
+    }
+
+    $("#zoomIn").click(function() {
+        if (currentColumns > minColumns) {
+            currentColumns -= 2; // Decrease columns by 2
+            updateGridColumns();
+        }
+    });
+
+    $("#zoomOut").click(function() {
+        if (currentColumns < maxColumns) {
+            currentColumns += 2; // Increase columns by 2
+            updateGridColumns();
+        }
+    });
+
+    updateGridColumns(); // Initialize with the default column setting
+});
 
 
       </script>
