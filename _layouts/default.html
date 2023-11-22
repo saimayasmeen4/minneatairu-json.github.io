@@ -23,7 +23,7 @@
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('results-container'),
         json: '{{ site.baseurl }}/search.json',
-        searchResultTemplate: '<li><img src="{url}" /><br/><a href="{url}" title="{caption}">{caption}</a></li>',
+        searchResultTemplate: '<li><figure><img src="{url}" /><figcaption>{caption}</figcaption></figure><br/><a href="{url}" title="{caption}">{caption}</a></li>',
         noResultsText: 'No results found',
         fuzzy: false
       })
