@@ -128,7 +128,30 @@
   font-family: 'Inconsolata', monospace;
 
 }
+.broken-image-placeholder {
+  width: 150px;
+  height: 150px;
+  background-color: limegreen;
+  position: relative;
+}
 
+.broken-image-placeholder::before, .broken-image-placeholder::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  background-color: black;
+}
+
+.broken-image-placeholder::before {
+  transform: rotate(45deg);
+}
+
+.broken-image-placeholder::after {
+  transform: rotate(-45deg);
+}
 
         .learn-more-btn:hover, .ai-btn:hover, #backToTopBt:hover, .zoom-btn:hover{
           background: black;
@@ -309,17 +332,22 @@ $(function () {
       img.height = 150;
       img.width = 150;
       img.onerror = function () {
-        this.style.display = 'none';
+        this.replaceWith(createBrokenImagePlaceholder());
       };
       imgWrapper.appendChild(img);
-      addSerialNumberOverlay(imgWrapper); // Add serial number overlay
+      addNumberOverlay(imgWrapper);
       document.getElementById("lightgallery1").appendChild(imgWrapper);
-
     });
     // After adding all images, update the count
   var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
+
+  function createBrokenImagePlaceholder() {
+    var placeholder = document.createElement("div");
+    placeholder.className = 'broken-image-placeholder';
+    return placeholder;
+  }
 
   // Get the modal
   var modal = document.getElementById('imageModal');
