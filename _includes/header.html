@@ -38,8 +38,8 @@
             </p>
             <p>Midjourney utilizes the LAION-5B dataset, a collection of internet-scraped data used for model training. A query within this dataset using the term 'Blonde Box Braids' returns images of caramel-skinned Black women and White women, as evidenced in the gallery. This distribution suggests a skewed representation within the dataset, notably underscoring the underrepresentation of darker skin tones in images labeled 'Blonde Box Braids'.
          </p>
-         <i>Blank green squares indicate images with broken links
-        </i>
+         <i>Blank green squares indicate images with broken</i>
+        </p>
           <p> 
 
             [ VIEW THE AI-GENERATED PORTRAITS ]
@@ -199,7 +199,7 @@
         #imageCount {
   font-family: 'Inconsolata', monospace;
   color: #000!important;
-  /* Additional styling as needed */
+
 }
 
         .modal-content-info {
@@ -225,9 +225,7 @@
           cursor: pointer;
         }
 body{background: lime;}
-.broken-image {
-  border: 1px solid black; /* Example: red border, you can change the color as needed */
-}
+
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -315,8 +313,6 @@ $(function () {
       img.width = 150;
       img.onerror = function () {
         this.style.display = 'none';
-        this.classList.add('broken-image'); 
-
       };
       imgWrapper.appendChild(img);
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
