@@ -6,10 +6,10 @@
     <nav class="site-nav">
 
   
-      
-      <div class="fixed-column">
-        <button  class="zoom-btn" id="zoomIn">+</button>
+      <div class="zoom-row">      <button  class="zoom-btn" id="zoomIn">+</button>
         <button  class="zoom-btn" id="zoomOut">-</button></div>
+      <div class="fixed-column">
+  
         <button id="imageCount" class="image-count">IMAGE COUNT: 0</button>
 
       <button id="learnMoreBtn" class="learn-more-btn">
@@ -22,7 +22,7 @@
       </button>
    
       <button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
-
+</div>
 
    
       <div id="learnMoreModal" class="modal-info">
@@ -77,12 +77,13 @@
         img:hover {
           cursor: crosshair;
         }
-
+.zoom-row{    display: flex;}
 .fixed-column {
     position: fixed; /* Fixed positioning */
     top: 20px; /* Distance from the top of the page */
     right: 20px; /* Distance from the right of the page */
     display: flex;
+    flex-direction: column; /* Arrange buttons vertically */
     align-items: flex-start; /* Align buttons to the start (right side) */
     z-index: 1000; /* Ensure it's above other elements */
 }
