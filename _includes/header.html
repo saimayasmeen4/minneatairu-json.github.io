@@ -223,6 +223,9 @@
           cursor: pointer;
         }
 body{background: lime;}
+.broken-image {
+  border: 1px solid black; /* Example: red border, you can change the color as needed */
+}
 
 #backToTopBtn {
   display: none; /* Initially hide the button */
@@ -299,28 +302,7 @@ $(function () {
     imageElement.style.position = 'relative';
     imageElement.appendChild(overlay);
   }
-  // Function to create X mark on broken images
-  function createXMark(container) {
-    container.style.position = 'relative';
-    container.style.display = 'flex';
-    container.style.alignItems = 'center';
-    container.style.justifyContent = 'center';
-    container.style.width = '100%';
-    container.style.height = '150px';
 
-    var line1 = document.createElement("div");
-    var line2 = document.createElement("div");
-
-    line1.style.position = line2.style.position = 'absolute';
-    line1.style.height = line2.style.height = '1px';
-    line1.style.width = line2.style.width = '100%';
-    line1.style.backgroundColor = line2.style.backgroundColor = 'black';
-    line1.style.transform = 'rotate(45deg)';
-    line2.style.transform = 'rotate(-45deg)';
-
-    container.appendChild(line1);
-    container.appendChild(line2);
-  }
   // Modify existing image loading function
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
@@ -330,7 +312,9 @@ $(function () {
       img.height = 150;
       img.width = 150;
       img.onerror = function () {
-        createXMark(imgWrapper); // Create X mark on error
+        this.style.display = 'none';
+        this.classList.add('broken-image'); 
+
       };
       imgWrapper.appendChild(img);
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
