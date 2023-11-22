@@ -281,14 +281,20 @@ border:1px solid;
 $(function () {
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
-      var img = document.createElement("img");
-      img.src = value.url;
-      img.height = 150;
-      img.width = 150;
-      img.onerror = function () {
-        this.style.display = 'none';
-      };
-      // Add click event to each image
+  var img = document.createElement("img");
+  img.src = value.url;
+  img.height = 150;
+  img.width = 150;
+  img.onerror = function () {
+    this.style.display = 'none';
+  };
+  // Create a serial number overlay
+  var serialNumber = "SN" + key; // Generate or retrieve a serial number
+  var containerWithSerial = addSerialNumber(img, serialNumber);
+  // Append the container instead of the image
+  document.getElementById("lightgallery1").appendChild(containerWithSerial);
+});
+
       img.onclick = function () {
         document.getElementById('fullImage').src = this.src;
         document.getElementById('imageModal').style.display = "block";
@@ -399,6 +405,31 @@ $(document).ready(function() {
     updateGridColumns(); // Initialize with the default column setting
 });
 
+function addSerialNumber(img, serialNumber) {
+  // Create a container for the image and serial number
+  var container = document.createElement("div");
+  container.style.position = "relative";
+  container.style.display = "inline-block"; // or 'block' depending on layout
+
+  // Create a span for the serial number
+  var serialText = document.createElement("span");
+  serialText.innerText = serialNumber;
+  serialText.style.position = "absolute";
+  serialText.style.top = "10px";
+  serialText.style.left = "10px";
+  serialText.style.color = "white"; // Choose a contrasting color
+  serialText.style.backgroundColor = "rgba(0, 0, 0, 0.5)"; // Semi-transparent background
+  serialText.style.padding = "2px";
+  serialText.style.borderRadius = "5px";
+  serialText.style.zIndex = "10";
+
+  // Append the image and serial number to the container
+  container.appendChild(img);
+  container.appendChild(serialText);
+
+  // Return the container element
+  return container;
+}
 
       </script>
 
