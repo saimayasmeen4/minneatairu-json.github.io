@@ -199,6 +199,14 @@
   color: #000!important;
   /* Additional styling as needed */
 }
+.serial-number {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    color: white; /* Or any color that stands out over your images */
+    font-weight: bold;
+    z-index: 10; /* Ensure it's above the image */
+}
 
         .modal-content-info {
           font-family: 'Inconsolata', monospace;
@@ -278,41 +286,10 @@ border:1px solid;
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
       <script>
 
-// Function to overlay serial number on an image
-function addSerialNumberToImage(img, serialNumber) {
-  var canvas = document.createElement('canvas');
-  var ctx = canvas.getContext('2d');
-
-  // Set canvas size to the size of the image
-  canvas.width = img.width;
-  canvas.height = img.height;
-
-  // Draw the image onto the canvas
-  ctx.drawImage(img, 0, 0);
-
-  // Set text properties (change as needed)
-  ctx.font = '20px Arial';
-  ctx.fillStyle = 'red';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'top';
-
-  // Draw the serial number at the top left corner
-  ctx.fillText(serialNumber, 10, 10);
-
-  // Replace the image src with the canvas data
-  img.src = canvas.toDataURL();
-}
-
-// Modify existing function where images are loaded
 $(function () {
   $.getJSON("search.json", function (obj) {
-    var serialNumber = 1; // Start serial number from 1
     $.each(obj, function (key, value) {
-      var img = new Image();
-      img.onload = function() {
-        addSerialNumberToImage(this, serialNumber++);
-        document.getElementById("lightgallery1").appendChild(this);
-      };
+      var img = document.createElement("img");
       img.src = value.url;
       img.height = 150;
       img.width = 150;
@@ -350,6 +327,17 @@ $(function () {
   }
 });
 
+$(document).ready(function () {
+    var serialNumber = 1; // Start with 1 or any desired starting number
+
+    $('#lightgallery1 img').each(function () {
+        var serialDiv = $('<div class="serial-number"></div>');
+        serialDiv.text(serialNumber); // Set the text to the current serial number
+        $(this).parent().css('position', 'relative'); // Ensure the parent has relative positioning
+        $(this).parent().append(serialDiv); // Append the serial number div to the parent
+        serialNumber++; // Increment the serial number for the next image
+    });
+});
 
 
         // Get the modal
