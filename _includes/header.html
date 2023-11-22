@@ -18,12 +18,12 @@
       <button class="ai-btn">
         <div>VIEW THE SERIES</div> 
       </button>
-      <button id="zoomIn">+</button>
-      <button id="zoomOut">-</button>
+      <button  class="zoom-btn" id="zoomIn">+</button>
+      <button  class="zoom-btn" id="zoomOut">-</button>
       <button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
 </div>
 
-      <!-- Modal -->
+   
       <div id="learnMoreModal" class="modal-info">
 
         <div class="modal-content-info">
@@ -87,9 +87,8 @@
     z-index: 1000; /* Ensure it's above other elements */
 }
 
-.fixed-column button {
-    margin-bottom: 10px; /* Spacing between buttons */
-    /* Add more button styling if necessary */
+.zoom-btn {background: lime;border: 1px solid black;
+   top: 10px; 
 }
 
 .modal {
