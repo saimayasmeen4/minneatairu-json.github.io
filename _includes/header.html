@@ -309,22 +309,17 @@ $(function () {
       img.height = 150;
       img.width = 150;
       img.onerror = function () {
-        this.replaceWith(createBrokenImagePlaceholder());
+        this.style.display = 'none';
       };
       imgWrapper.appendChild(img);
-      addNumberOverlay(imgWrapper);
+      addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
+
     });
     // After adding all images, update the count
   var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
-
-    function createBrokenImagePlaceholder() {
-    var placeholder = document.createElement("div");
-    placeholder.className = 'broken-image-placeholder';
-    return placeholder;
-  }
 
   // Get the modal
   var modal = document.getElementById('imageModal');
