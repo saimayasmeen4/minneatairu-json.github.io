@@ -419,36 +419,27 @@ $(document).ready(function() {
     var minColumns = 2;
     var maxColumns = screenWidth <= 768 ? 4 : 12;
     var currentColumns = screenWidth <= 768 ? 4 : 12; // Start with 4 columns for mobile
-    var baseImageHeight = 150; // Base height at max zoom
-    var imageHeight = baseImageHeight;
 
-    function updateGridLayout() {
+    function updateGridColumns() {
         $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
-        // Update image height for desktop
-        if (screenWidth > 768) {
-            $("#lightgallery1 img").css("height", `${imageHeight}px`);
-        }
     }
 
     $("#zoomIn").click(function() {
         if (currentColumns > minColumns) {
             currentColumns--; // Decrease columns by 1
-            imageHeight += 100; // Increase image height by 100px
-            updateGridLayout();
+            updateGridColumns();
         }
     });
 
     $("#zoomOut").click(function() {
         if (currentColumns < maxColumns) {
             currentColumns++; // Increase columns by 1
-            imageHeight -= 100; // Decrease image height by 100px
-            updateGridLayout();
+            updateGridColumns();
         }
     });
 
-    updateGridLayout(); // Initialize with the default grid layout and image height
+    updateGridColumns(); // Initialize with the default column setting
 });
-
 
 
 
