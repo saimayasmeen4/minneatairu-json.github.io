@@ -316,12 +316,12 @@ $(function () {
     imageElement.appendChild(overlay);
   }
 
-   // Function to open the modal with the clicked image
-   function onImageClick(event) {
+ // Function to handle image click
+ function onImageClick(event) {
     var modal = document.getElementById('imageModal');
     var modalImg = document.getElementById("modalImage");
     modal.style.display = "block";
-    modalImg.src = event.target.src;
+    modalImg.src = this.src; // Set the src of the modal image to the clicked image
   }
   
   // Modify existing image loading function
