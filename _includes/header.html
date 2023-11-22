@@ -284,12 +284,12 @@ $(function () {
   // Function to add serial number overlay
   function addSerialNumberOverlay(imageElement) {
     var overlay = document.createElement("div");
-    overlay.innerText = 'Serial: ' + serialNumber++;
+    overlay.innerText = serialNumber++;
     overlay.style.position = 'absolute';
     overlay.style.left = '0';
     overlay.style.top = '0';
-    overlay.style.color = 'white'; // Adjust as needed
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Semi-transparent background
+    overlay.style.color = 'black'; // Adjust as needed
+    overlay.style.backgroundColor = 'lime'; // Semi-transparent background
     overlay.style.padding = '5px';
 
     imageElement.style.position = 'relative';
