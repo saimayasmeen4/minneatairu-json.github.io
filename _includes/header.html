@@ -272,12 +272,10 @@ button#backToTopBtn:hover {
  
 #lightgallery1 img {
     width: 100%; 
-    height: 150px; 
+    height: auto; 
     object-fit: cover;
     padding: 0;
     margin: 0 -1px -1px 0;
-
-
 }
 
 @media screen and (max-width: 768px) {
@@ -430,34 +428,33 @@ $(document).ready(function() {
     var minColumns = 2;
     var maxColumns = screenWidth <= 768 ? 4 : 12;
     var currentColumns = screenWidth <= 768 ? 4 : 12;
-    var baseImageSize = 150; // base size for width and height
-    var zoomFactor = 1; // Factor by which image size changes
 
-    function updateGridImages() {
+    function updateGridColumnCount() {
         $("#lightgallery1").css("grid-template-columns", `repeat(${currentColumns}, 1fr)`);
-        $("#lightgallery1 img").css({
-          "height": baseImageSize * zoomFactor + "px",
-          "width": baseImageSize * zoomFactor + "px" // Set width equal to height
-        });
     }
 
     $("#zoomIn").click(function() {
         if (currentColumns > minColumns) {
             currentColumns--; // Decrease columns
-            zoomFactor += 0.1; // Increase zoom factor
-            updateGridImages();
+            updateGridColumnCount();
         }
     });
 
     $("#zoomOut").click(function() {
         if (currentColumns < maxColumns) {
             currentColumns++; // Increase columns
-            zoomFactor -= 0.1; // Decrease zoom factor
-            updateGridImages();
+            updateGridColumnCount();
         }
     });
 
-    updateGridImages(); // Initialize with the default settings
+    updateGridColumnCount(); // Initialize with the default settings
+});
+
+$(window).on('resize load', function() {
+    $('#lightgallery1 img').each(function() {
+        var width = $(this).width();
+        $(this).css('height', width + 'px'); // Set height equal to the current width
+    });
 });
 
 
