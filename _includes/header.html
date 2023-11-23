@@ -67,6 +67,7 @@
       </div>
       <div>
       </div>
+      <button id="loadMoreBtn" class="load-more-btn">LOAD MORE IMAGES</button>
 
       <style>
         img {
@@ -458,6 +459,38 @@ $(window).on('resize load', function() {
 });
 
 
+$(function () {
+  var totalImages = 0; // Total number of images
+  var imagesLoaded = 0; // Number of images currently loaded
+  var initialLoad = 300; // Number of images to load initially
+  var loadMoreCount = 100; // Number of images to load on each "Load More" click
+
+  // Function to load images
+  function loadImages(count) {
+    $.getJSON("search.json", function (obj) {
+      totalImages = obj.length;
+      var imagesToShow = obj.slice(imagesLoaded, imagesLoaded + count);
+      $.each(imagesToShow, function (key, value) {
+        // ... existing code to create and append image elements ...
+        imagesLoaded++;
+      });
+      // Update the image count display
+      $("#imageCount").text('IMAGE COUNT: ' + imagesLoaded);
+    });
+  }
+
+  // Load initial images
+  loadImages(initialLoad);
+
+  // Handle "Load More" button click
+  $("#loadMoreBtn").click(function() {
+    var remainingImages = totalImages - imagesLoaded;
+    var countToLoad = Math.min(remainingImages, loadMoreCount);
+    if (countToLoad > 0) {
+      loadImages(countToLoad);
+    }
+  });
+});
 
 
 
