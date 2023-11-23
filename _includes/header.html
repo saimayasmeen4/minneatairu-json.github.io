@@ -460,36 +460,51 @@ $(window).on('resize load', function() {
 
 
 $(function() {
-  var imagesPerPage = 300;  // Number of images to show per page
-  var totalImages = 0;      // Total number of images, to be determined
-  var currentPage = 1;      // Current page
+  var imagesPerPage = 300;  // Number of images to show initially
+  var additionalImages = 100; // Number of additional images to show per load
+  var loadedImages = 0;     // Counter for the number of loaded images
 
-  // Function to show images based on page number
-  function showImages(page) {
-    var startIndex = (page - 1) * imagesPerPage;
-    var endIndex = startIndex + imagesPerPage;
-    $('#lightgallery1 img').slice(startIndex, endIndex).show();
-    currentPage++;
+  // Function to load images
+  function loadImages(numberOfImages) {
+    $.getJSON("search.json", function (obj) {
+      var imagesToShow = obj.slice(loadedImages, loadedImages + numberOfImages);
+      $.each(imagesToShow, function (key, value) {
+        var imgWrapper = document.createElement("div");
+        var img = document.createElement("img");
+        img.src = value.url;
+        img.height = 150;
+        img.width = 150;
+        img.onclick = onImageClick;
+        img.onerror = function () {
+          this.style.display = 'none';
+        };
+        imgWrapper.appendChild(img);
+        addSerialNumberOverlay(imgWrapper); // Assuming you have this function from your previous code
+        document.getElementById("lightgallery1").appendChild(imgWrapper);
+      });
+      loadedImages += imagesToShow.length;
+      updateImageCount();
+      if (loadedImages >= obj.length) {
+        $('#loadMoreBtn').hide(); // Hide the button if all images are loaded
+      }
+    });
   }
 
-  // Initially load first set of images
-  showImages(currentPage);
+  // Call the function initially to load the first set of images
+  loadImages(imagesPerPage);
 
-  // Load more images on button click
+  // Event handler for the Load More button
   $('#loadMoreBtn').click(function() {
-    showImages(currentPage);
-    if (currentPage * imagesPerPage >= totalImages) {
-      $(this).hide(); // Hide button if no more images to load
-    }
+    loadImages(additionalImages);
   });
 
-  // Load total images count and hide initially hidden images
-  $(document).ready(function() {
-    totalImages = $('#lightgallery1 img').length;
-    $('#lightgallery1 img').hide();
-    showImages(1); // Show first set of images
-  });
+  // Function to update the image count display
+  function updateImageCount() {
+    var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
+    document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
+  }
 });
+
 
 
 
