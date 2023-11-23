@@ -59,6 +59,7 @@
   </div>
 </div>
 
+<button id="loadMoreBtn" class="load-more-btn">LOAD MORE</button>
 
 
       <!--       <a href="#" class="menu-icon"> -->
@@ -67,7 +68,6 @@
       </div>
       <div>
       </div>
-      <button id="loadMoreBtn" class="load-more-btn">LOAD MORE IMAGES</button>
 
       <style>
         img {
@@ -459,36 +459,35 @@ $(window).on('resize load', function() {
 });
 
 
-$(function () {
-  var totalImages = 0; // Total number of images
-  var imagesLoaded = 0; // Number of images currently loaded
-  var initialLoad = 300; // Number of images to load initially
-  var loadMoreCount = 100; // Number of images to load on each "Load More" click
+$(function() {
+  var imagesPerPage = 300;  // Number of images to show per page
+  var totalImages = 0;      // Total number of images, to be determined
+  var currentPage = 1;      // Current page
 
-  // Function to load images
-  function loadImages(count) {
-    $.getJSON("search.json", function (obj) {
-      totalImages = obj.length;
-      var imagesToShow = obj.slice(imagesLoaded, imagesLoaded + count);
-      $.each(imagesToShow, function (key, value) {
-        // ... existing code to create and append image elements ...
-        imagesLoaded++;
-      });
-      // Update the image count display
-      $("#imageCount").text('IMAGE COUNT: ' + imagesLoaded);
-    });
+  // Function to show images based on page number
+  function showImages(page) {
+    var startIndex = (page - 1) * imagesPerPage;
+    var endIndex = startIndex + imagesPerPage;
+    $('#lightgallery1 img').slice(startIndex, endIndex).show();
+    currentPage++;
   }
 
-  // Load initial images
-  loadImages(initialLoad);
+  // Initially load first set of images
+  showImages(currentPage);
 
-  // Handle "Load More" button click
-  $("#loadMoreBtn").click(function() {
-    var remainingImages = totalImages - imagesLoaded;
-    var countToLoad = Math.min(remainingImages, loadMoreCount);
-    if (countToLoad > 0) {
-      loadImages(countToLoad);
+  // Load more images on button click
+  $('#loadMoreBtn').click(function() {
+    showImages(currentPage);
+    if (currentPage * imagesPerPage >= totalImages) {
+      $(this).hide(); // Hide button if no more images to load
     }
+  });
+
+  // Load total images count and hide initially hidden images
+  $(document).ready(function() {
+    totalImages = $('#lightgallery1 img').length;
+    $('#lightgallery1 img').hide();
+    showImages(1); // Show first set of images
   });
 });
 
