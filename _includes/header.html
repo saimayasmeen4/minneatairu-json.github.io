@@ -462,23 +462,26 @@ $(window).on('resize load', function() {
 });
 
 $(document).ready(function() {
-    // Click event on search input
-    $('#search-input').click(function(event) {
-        // Toggle the expanded class only if it is not already expanded
-        if (!$(this).hasClass('expanded')) {
-            $(this).addClass('expanded');
-        }
-        event.stopPropagation(); // Prevent click event from propagating to the document
+    // Toggle the expanded class on click of the search input
+    $('#search-input').on('click', function(event) {
+        $(this).toggleClass('expanded');
+        event.stopPropagation(); // Prevent the click from propagating to the document
     });
 
-    // Click event on the document
-    $(document).click(function(event) {
-        // If click outside search input and it is expanded, then close it
-        if (!$(event.target).closest('#search-input').length && $('#search-input').hasClass('expanded')) {
-            $('#search-input').removeClass('expanded');
+    // Detect clicks on the document
+    $(document).on('click', function(event) {
+        var $searchInput = $('#search-input');
+
+        // Check if the click is outside the search input
+        if (!$searchInput.is(event.target) && $searchInput.has(event.target).length === 0) {
+            // If the search input is expanded, collapse it
+            if ($searchInput.hasClass('expanded')) {
+                $searchInput.removeClass('expanded');
+            }
         }
     });
 });
+
 
 
 
