@@ -461,12 +461,19 @@ $(window).on('resize load', function() {
     });
 });
 
- 
 $(document).ready(function() {
-    $('#search-input').click(function() {
-        $(this).toggleClass('expanded'); // Toggle the expanded class on click
+    // Expand the input when it's clicked
+    $('#search-input').click(function(event) {
+        $(this).addClass('expanded');
+        event.stopPropagation(); // Prevent the click from propagating to the document
+    });
+
+    // Collapse the input when clicking outside of it
+    $(document).click(function() {
+        $('#search-input').removeClass('expanded');
     });
 });
+
 
 
 window.simpleJekyllSearch = new SimpleJekyllSearch({
