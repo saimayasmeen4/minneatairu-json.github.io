@@ -460,38 +460,6 @@ $(window).on('resize load', function() {
 
 
 
-$(function() {
-  var imagesPerPage = 100; // Number of images to show per page
-  var totalImages = 0; // Total number of images, to be determined
-  var currentPage = 1; // Current page
-
-  // Function to show images based on page number
-  function showImages(page) {
-    var startIndex = (page - 1) * imagesPerPage;
-    var endIndex = startIndex + imagesPerPage;
-    $('#lightgallery1 img').slice(startIndex, endIndex).show();
-    currentPage++;
-  }
-
-  // Initially load first set of images
-  showImages(currentPage);
-
-  // Load more images on button click
-  $('#loadMoreBtn').click(function() {
-    showImages(currentPage);
-    if (currentPage * imagesPerPage >= totalImages) {
-      $(this).hide(); // Hide button if no more images to load
-    }
-  });
-
-  // Load total images count and hide initially hidden images
-  $(document).ready(function() {
-    totalImages = $('#lightgallery1 img').length;
-    $('#lightgallery1 img').hide();
-    showImages(1); // Show first set of images
-  });
-});
-
 
       </script>
 
