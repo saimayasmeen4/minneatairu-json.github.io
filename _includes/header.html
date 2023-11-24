@@ -462,17 +462,24 @@ $(window).on('resize load', function() {
 });
 
 $(document).ready(function() {
-    // Expand the input when it's clicked
+    // Click event on search input
     $('#search-input').click(function(event) {
-        $(this).addClass('expanded');
-        event.stopPropagation(); // Prevent the click from propagating to the document
+        // Toggle the expanded class only if it is not already expanded
+        if (!$(this).hasClass('expanded')) {
+            $(this).addClass('expanded');
+        }
+        event.stopPropagation(); // Prevent click event from propagating to the document
     });
 
-    // Collapse the input when clicking outside of it
-    $(document).click(function() {
-        $('#search-input').removeClass('expanded');
+    // Click event on the document
+    $(document).click(function(event) {
+        // If click outside search input and it is expanded, then close it
+        if (!$(event.target).closest('#search-input').length && $('#search-input').hasClass('expanded')) {
+            $('#search-input').removeClass('expanded');
+        }
     });
 });
+
 
 
 
