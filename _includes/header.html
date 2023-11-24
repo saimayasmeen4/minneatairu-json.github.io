@@ -86,8 +86,12 @@
 
 
     right: 20px; }
-
+    input[type="search" i].expanded {
+    width: 340px;
+}
     input[type="search" i] {
+      transition: width 0.5s ease-in-out; /* Add this line */
+
 background: yellow;font-family:'inconsolata'; padding:20px;     border: 1px solid #000000; position: fixed;    z-index: 1000;width: 170px;
 
   top: 15px;
@@ -467,6 +471,11 @@ $(window).on('resize load', function() {
 });
 
  
+$(document).ready(function() {
+    $('#search-input').click(function() {
+        $(this).toggleClass('expanded'); // Toggle the expanded class on click
+    });
+});
 
 
 window.simpleJekyllSearch = new SimpleJekyllSearch({
