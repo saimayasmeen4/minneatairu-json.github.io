@@ -28,6 +28,10 @@
       <button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
 </div>
 
+<div id="search-demo-container">
+  <input type="search" id="search-input" placeholder="search...">
+  <ul id="results-container"></ul>
+</div>
 
       <div id="learnMoreModal" class="modal-info">
 
@@ -459,7 +463,14 @@ $(window).on('resize load', function() {
  
 
 
-
+window.simpleJekyllSearch = new SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ site.baseurl }}/search.json',
+        searchResultTemplate: '<li><img src="{url}" /><br/><a href="{url}" title="{caption}">{caption}</a></li>',
+        noResultsText: 'No results found',
+        fuzzy: false
+      })
 
       </script>
 
