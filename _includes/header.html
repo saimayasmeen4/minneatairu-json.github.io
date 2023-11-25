@@ -328,8 +328,10 @@ $(function () {
   
   // Modify existing image loading function
   $.getJSON("search.json", function (obj) {
-    $.each(obj, function (key, value) {
-      var imgWrapper = document.createElement("div");
+     var arrItems = [];      // The array to store JSON items.
+            $.each(obj, function (key, value) {
+                arrItems.push(value.url);       // Push values in the array.
+              var imgWrapper = document.createElement("div");
       var img = document.createElement("img");
       img.src = value.url;
       img.height = 150;
@@ -341,9 +343,9 @@ $(function () {
       imgWrapper.appendChild(img);
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
-      
-
-    });
+            });
+    
+    
     // After adding all images, update the count
   var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
