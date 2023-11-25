@@ -21,7 +21,6 @@
       <button class="ai-btn">
         <div>SHOW ANNOTATIONS</div> 
       </button>
-      <input type="search" id="search-input" placeholder="SEARCH 5642 IMAGES">
       <button id="backToTopBtn" onclick="scrollToTop()">BACK TO TOP</button>
 </div>
 
@@ -485,15 +484,6 @@ $(document).ready(function() {
 
 
 
-
-window.simpleJekyllSearch = new SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: '{{ site.baseurl }}/search.json',
-        searchResultTemplate: '<li><img src="{url}" /><br/><a href="{url}" title="{caption}">{caption}</a></li>',
-        noResultsText: 'No results found',
-        fuzzy: false
-      })
 
       </script>
 
