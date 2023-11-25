@@ -344,12 +344,13 @@ $(function () {
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
             });
-    
+    alert(arrItems.length);
     
     // After adding all images, update the count
   var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
+  
 
   // Get the modal
   var modal = document.getElementById('imageModal');
