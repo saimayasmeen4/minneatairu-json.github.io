@@ -63,7 +63,9 @@
 </div>
  <!--       <a href="#" class="menu-icon"> -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <div id="lightgallery1">
+      <div id="lightgallery1" style="display:none;">
+      </div><br>
+      <div id="loadmore">Load More
       </div>
       <div>
       </div>
@@ -333,12 +335,15 @@ $(function () {
     modal.style.display = "block";
     modalImg.src = this.src; // Set the src of the modal image to the clicked image
   }
-  
+   let box=document.getElementById("lightgallery1");
+   var currentItem=300;
+  var item=[];
   // Modify existing image loading function
   $.getJSON("search.json", function (obj) {
     $.each(obj, function (key, value) {
       var imgWrapper = document.createElement("div");
       var img = document.createElement("img");
+      item.push(value.url);
       img.src = value.url;
       img.height = 150;
       img.width = 150;
@@ -349,13 +354,30 @@ $(function () {
       imgWrapper.appendChild(img);
       addSerialNumberOverlay(imgWrapper); // Add serial number overlay
       document.getElementById("lightgallery1").appendChild(imgWrapper);
-      
+     
+      for(var i=0;i<currentItem;i++){
+        
+      box[i].style.display='inline-block';
 
     });
+    currentItem+=300;
     // After adding all images, update the count
   var imageCount = document.getElementById("lightgallery1").getElementsByTagName("img").length;
   document.getElementById("imageCount").innerText = 'IMAGE COUNT: ' + imageCount;
   });
+  let load_more= document.getElementById("loadmore");
+  load_more.onclick = () => {
+    if(item.length>currentItem){
+    for(var i=currentItem;i<300;i++){
+        
+      box[i].style.display='inline-block';
+
+    });
+    currentItem+=300;
+    }else{
+      alert('No more Product to display');
+    }
+  }
 
   // Get the modal
   var modal = document.getElementById('imageModal');
